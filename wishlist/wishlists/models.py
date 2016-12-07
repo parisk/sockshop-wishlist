@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Wishlist(models.Model):
-    customer = models.IntegerField(unique=True)
+    customer = models.CharField(max_length=255, unique=True)
 
     def __unicode__(self):
         return 'Wishlist of customer #%s' % self.customer
@@ -16,4 +16,4 @@ class Wishlist(models.Model):
 
 class WishlistItem(models.Model):
     wishlist = models.ForeignKey(Wishlist, on_delete=models.CASCADE)
-    product = models.IntegerField()
+    product = models.CharField(max_length=255)

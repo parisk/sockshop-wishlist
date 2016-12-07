@@ -26,7 +26,14 @@ SECRET_KEY = 'go*(gqhe0q*-85==w%$y*vq5@-#pkx8_mhfi-aa8tq4oxpwspg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'wishlist']
+ALLOWED_HOSTS = []
+if os.getenv('ALLOWED_HOSTS'):
+    hosts = os.getenv('ALLOWED_HOSTS').split(',')
+    # Stolos CLI bug
+    for host in hosts:
+        if host.startswith('http://'):
+            host = host[7:]
+        ALLOWED_HOSTS.append(host)
 
 if os.getenv('SL_PUBLIC_URL'):
     ALLOWED_HOSTS.append(os.getenv('SL_PUBLIC_URL'))
