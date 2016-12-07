@@ -7,9 +7,10 @@ EXPOSE 8000
 VOLUME ["/mnt/"]
 WORKDIR "/usr/src/app"
 
-ADD . /usr/src/app
+COPY requirements.txt /usr/src/requirements.txt
+RUN pip install -r /usr/src/requirements.txt
 
-RUN pip install -r requirements.txt
+ADD . /usr/src/app
 
 CMD ["honcho", "start"]
 
