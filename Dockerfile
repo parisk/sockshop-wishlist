@@ -1,5 +1,9 @@
-FROM ubuntu:16.04
+FROM 3.5.2-slim
 MAINTAINER Paris Kasidiaris <paris@sourcelair.com>
 
-# Add directives for the building of your application.
-# Dockerfile reference: https://docs.docker.com/engine/reference/builder/
+ENV PORT 8000
+ENV DATABASE_URL sqlite:////mnt/db.sqlite3
+EXPOSE 8000
+VOLUME ["/mnt/"]
+CMD ["honcho", "start"]
+
