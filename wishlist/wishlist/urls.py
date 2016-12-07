@@ -18,8 +18,11 @@ from django.contrib import admin
 
 from rest_framework import routers
 
+from wishlists import views as wishlists_views
+
 
 router = routers.DefaultRouter()
+router.register(r'wishlists', wishlists_views.WishlistViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
