@@ -1,7 +1,8 @@
 {
   "name": "skel",
+  "private": true,
   "version": "1.0.0",
-  "description": "A well-structured Git repository skeleton",
+  "description": "A microserviced wishlist microservice for the microservices demo sockshop multi-microservice.",
   "repository": {
     "type": "git",
     "url": "https://github.com/parisk/skel.git"

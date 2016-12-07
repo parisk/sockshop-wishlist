@@ -6,7 +6,7 @@
 ## Opening issues
 
 The preferred way to report bugs or request features is to use
-[GitHub issues](http://github.com/parisk/skel/issues). Before
+[GitHub issues](http://github.com/parisk/sockshop-wishlist/issues). Before
 opening an issue, read these pointers.
 
 ### Opening issues effectively
@@ -26,7 +26,7 @@ opening an issue, read these pointers.
 ## Contributing code
 
 - Make sure you have a [GitHub account](https://github.com/join)
-- Fork [this repo](https://github.com/parisk/skel/)
+- Fork [this repo](https://github.com/parisk/sockshop-wishlist/)
   ([how to fork a repo](https://help.github.com/articles/fork-a-repo))
 - Make your changes
 - Submit a pull request ([how to create a pull request](https://help.github.com/articles/fork-a-repo)). Don't put more than one feature/fix in a single pull request.

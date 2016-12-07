@@ -28,3 +28,5 @@ pids
 # Local environment (virtualenv) + dotenv
 venv/
 .env
+
+db.sqlite3
