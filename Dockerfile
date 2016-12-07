@@ -1,4 +1,4 @@
-FROM 3.5.2-slim
+FROM python:3.5.2-slim
 MAINTAINER Paris Kasidiaris <paris@sourcelair.com>
 
 ENV PORT 8000
