@@ -10,17 +10,23 @@ from wishlists import serializers
 class WishlistViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.WishlistSerializer
     queryset = models.Wishlist.objects.all()
+    lookup_field = 'customer'
 
 
 class WishlistItemViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.NamespacedWishlistItemSerializer
+    lookup_field = 'product'
 
     def get_queryset(self):
-        wishlist = models.Wishlist.objects.get(id=self.kwargs['wishlist_id'])
+        wishlist = models.Wishlist.objects.get(
+            customer=self.kwargs['customer']
+        )
         return models.WishlistItem.objects.filter(wishlist=wishlist)
 
-    def create(self, request, wishlist_id):
-        wishlist = models.Wishlist.objects.get(id=self.kwargs['wishlist_id'])
+    def create(self, request, customer):
+        wishlist = models.Wishlist.objects.get(
+            customer=self.kwargs['customer']
+        )
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         try:

@@ -25,7 +25,7 @@ router = routers.DefaultRouter()
 router.register(r'wishlists', wishlists_views.WishlistViewSet)
 
 router.register(
-    r'wishlists/(?P<wishlist_id>\d+)/items',
+    r'wishlists/(?P<customer>\d+)/items',
     wishlists_views.WishlistItemViewSet,
     base_name='wishlist-item'
 )
