@@ -1,0 +1,2 @@
+class DuplicateProductInWishlist(Exception):
+    pass

@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 
+from wishlists import exceptions
 from wishlists import models
 from wishlists import serializers
 
@@ -22,7 +23,15 @@ class WishlistItemViewSet(viewsets.ModelViewSet):
         wishlist = models.Wishlist.objects.get(id=self.kwargs['wishlist_id'])
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        wishlist_item = serializer.create(serializer.data, wishlist)
+        try:
+            wishlist_item = serializer.create(serializer.data, wishlist)
+        except exceptions.DuplicateProductInWishlist as e:
+            response = Response(
+                {'message': str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            return response
+
         headers = self.get_success_headers(serializer.data)
 
         response_serializer = serializers.WishlistItemSerializer(
@@ -36,3 +45,5 @@ class WishlistItemViewSet(viewsets.ModelViewSet):
             headers=headers
         )
         return response
+
+from wishlists import signals
