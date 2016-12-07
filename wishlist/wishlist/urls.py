@@ -24,6 +24,12 @@ from wishlists import views as wishlists_views
 router = routers.DefaultRouter()
 router.register(r'wishlists', wishlists_views.WishlistViewSet)
 
+router.register(
+    r'wishlists/(?P<wishlist_id>\d+)/items',
+    wishlists_views.WishlistItemViewSet,
+    base_name='wishlist-item'
+)
+
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include(
