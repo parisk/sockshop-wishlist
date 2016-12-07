@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -18,9 +19,12 @@ class WishlistItemViewSet(viewsets.ModelViewSet):
     lookup_field = 'product'
 
     def get_queryset(self):
-        wishlist = models.Wishlist.objects.get(
-            customer=self.kwargs['customer']
-        )
+        try:
+            wishlist = models.Wishlist.objects.get(
+                customer=self.kwargs['customer']
+            )
+        except models.Wishlist.DoesNotExist:
+            raise Http404
         return models.WishlistItem.objects.filter(wishlist=wishlist)
 
     def create(self, request, customer):
