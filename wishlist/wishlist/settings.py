@@ -26,7 +26,7 @@ SECRET_KEY = 'go*(gqhe0q*-85==w%$y*vq5@-#pkx8_mhfi-aa8tq4oxpwspg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wishlist']
 
 if os.getenv('SL_PUBLIC_URL'):
     ALLOWED_HOSTS.append(os.getenv('SL_PUBLIC_URL'))
